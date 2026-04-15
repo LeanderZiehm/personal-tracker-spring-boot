@@ -1,0 +1,41 @@
+
+<style>
+ 
+</style>
+
+<button (click)="addBox()">Add</button>
+
+<div id="grid">
+  <div class="box" *ngFor="let box of boxes()">
+    {{ box }}
+  </div>
+</div>
+
+<button class="add-btn" (click)="openModal()">+</button>
+
+<!-- Modal -->
+<div class="overlay" *ngIf="showModal()">
+  <div class="modal">
+    
+    <button class="close-btn" (click)="closeModal()">×</button>
+
+    <h2>New Habit</h2>
+
+    <input 
+      type="text" 
+      [(ngModel)]="habitName" 
+      placeholder="Enter habit..."
+    />
+
+    <div class="actions">
+      <button (click)="submitHabit()">Confirm</button>
+      <button (click)="closeModal()">Cancel</button>
+    </div>
+
+  </div>
+</div>
+
+<router-outlet />
+
+
+
