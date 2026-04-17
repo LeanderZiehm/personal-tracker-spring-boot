@@ -1,8 +1,26 @@
-
-# any way to make one command to start both backend and frontend in two terminals? maybe with tmux?
-frontend:
-	cd frontend && ng server
+.PHONY: backend frontend database start all
 
 backend:
-	cd backend && 
-	
+	cd backend && make
+
+frontend:
+	cd frontend && npm start
+
+database:
+	cd ops && make database
+
+all:
+	$(MAKE) -j3 backend frontend database
+
+
+start:
+	tmux new-session -d -s personal-tracker \; \
+		new-window -n backend 'cd backend && ./mvnw spring-boot:run' \; \
+		new-window -n frontend 'cd frontend && npm start' \; \
+		new-window -n db 'cd ops && make database' \; \
+		select-window -t backend \; \
+		attach-session -t personal-tracker
+
+stop:
+	tmux kill-session -t personal-tracker
+

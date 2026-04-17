@@ -24,10 +24,15 @@ export class App {
     // 
   }
 
-  submitHabit(){
-    const payload = {name:this.habitName};
+  submitForm(){
 
-    this.http.post('/habit',payload).subscribe({
+    const isHabit = false;
+    if (isHabit){
+
+    const habitPayload = {name:this.habitName};
+
+
+    this.http.post('/habit',habitPayload).subscribe({
       next: () => {
         console.log("habit created");
         this.closeModal();
@@ -37,6 +42,26 @@ export class App {
       }
 
     });
+
+    }else{
+
+
+    const payload = {text:this.habitName};
+
+    this.http.post('https://tracker-api.leanderziehm.com/events',payload).subscribe({
+      next: () => {
+        console.log("event created");
+        this.closeModal();
+      },
+      error: (err) => {
+        console.error("event creation failed",err)
+      }
+
+    });
+
+
+
+    }
 
 
   }

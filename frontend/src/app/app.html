@@ -1,7 +1,8 @@
+<div>
+  <input type="text" />
+  <button (click)="sendEvent()">Send Event</button>
+</div>
 
-<style>
- 
-</style>
 
 <button (click)="addBox()">Add</button>
 
@@ -16,19 +17,15 @@
 <!-- Modal -->
 <div class="overlay" *ngIf="showModal()">
   <div class="modal">
-    
+
     <button class="close-btn" (click)="closeModal()">×</button>
 
     <h2>New Habit</h2>
 
-    <input 
-      type="text" 
-      [(ngModel)]="habitName" 
-      placeholder="Enter habit..."
-    />
+    <input type="text" [(ngModel)]="habitName" placeholder="Enter habit..." />
 
     <div class="actions">
-      <button (click)="submitHabit()">Confirm</button>
+      <button (click)="submitForm()">Confirm</button>
       <button (click)="closeModal()">Cancel</button>
     </div>
 
@@ -36,6 +33,3 @@
 </div>
 
 <router-outlet />
-
-
-
