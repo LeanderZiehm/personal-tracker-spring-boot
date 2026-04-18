@@ -7,7 +7,7 @@ frontend:
 	cd frontend && npm start
 
 database:
-	cd ops && make database
+	cd database && make database
 
 all:
 	$(MAKE) -j3 backend frontend database

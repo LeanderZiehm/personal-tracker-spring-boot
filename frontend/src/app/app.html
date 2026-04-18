@@ -1,35 +1,6 @@
-<div>
-  <input type="text" />
-  <button (click)="sendEvent()">Send Event</button>
-</div>
-
-
-<button (click)="addBox()">Add</button>
-
-<div id="grid">
-  <div class="box" *ngFor="let box of boxes()">
-    {{ box }}
-  </div>
-</div>
-
-<button class="add-btn" (click)="openModal()">+</button>
-
-<!-- Modal -->
-<div class="overlay" *ngIf="showModal()">
-  <div class="modal">
-
-    <button class="close-btn" (click)="closeModal()">×</button>
-
-    <h2>New Habit</h2>
-
-    <input type="text" [(ngModel)]="habitName" placeholder="Enter habit..." />
-
-    <div class="actions">
-      <button (click)="submitForm()">Confirm</button>
-      <button (click)="closeModal()">Cancel</button>
-    </div>
-
-  </div>
-</div>
-
+<app-header></app-header>
+<app-event-widget></app-event-widget>
+<app-habit-tracker></app-habit-tracker>
+<app-box-example></app-box-example>
 <router-outlet />
+<app-footer></app-footer>
